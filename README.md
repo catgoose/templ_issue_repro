@@ -29,3 +29,23 @@ stack traceback:
         vim/_editor.lua: in function <vim/_editor.lua:0>
 Press ENTER or type command to continue
 ```
+
+use `ca` keybinding over error in template:
+
+```
+templ Index() {
+{{ v := "a" }}
+ <!DOCTYPE html>
+ <html lang="en">
+ { fmt.Sprintf("variable: %s", v) }
+ { fmt.Sprintf("variable: %s", a) }
+  <body>
+   @Content()
+  </body>
+ </html>
+}
+```
+
+Use over `fmt` (not imported) or `a` (not defined)
+
+Observe `No code actions available`
