@@ -59,6 +59,8 @@ local config = function()
   }
   lspconfig.gopls.setup(gopls_opts)
 
+  local filetypes = { "html", "templ" }
+
   local templ_opts = {
     cmd = {
       "templ",
@@ -66,13 +68,16 @@ local config = function()
       "-http=localhost:7474",
       string.format("-log=%s/templ.log", vim.fn.expand("~")),
     },
-    filetypes = { "templ" },
+    filetypes = filetypes,
     root_dir = lspconfig.util.root_pattern("go.mod", ".git"),
     settings = {},
   }
+  lspconfig.html.setup({
+    filetypes = filetypes,
+  })
   lspconfig.templ.setup(templ_opts)
   lspconfig.htmx.setup({
-    filetypes = { "templ" },
+    filetypes = filetypes,
   })
 
   vim.api.nvim_create_autocmd("LspAttach", {
