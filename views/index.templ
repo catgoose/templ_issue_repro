@@ -1,8 +1,11 @@
 package views
 
 templ Index() {
+{{ v := "a" }}
 	<!DOCTYPE html>
 	<html lang="en">
+	{ fmt.Sprintf("variable: %s", v) }
+	{ fmt.Sprintf("variable: %s", a) }
 		<body>
 			@Content()
 		</body>

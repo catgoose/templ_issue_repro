@@ -77,6 +77,7 @@ local config = function()
     callback = function(event)
       local bufopts = { noremap = true, silent = true, buffer = event.buf }
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+      vim.keymap.set("n", "ca", vim.lsp.buf.code_action, bufopts)
     end,
   })
 end
