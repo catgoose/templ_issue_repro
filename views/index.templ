@@ -5,6 +5,13 @@ templ Index() {
 	<html lang="en">
 		<body>
 			@Content()
+			<div class="navbar bg-base-300">
+			     <div
+				hx-get="/home/nav/buttons"
+				hx-trigger="load"
+				hx-swap="outerHTML">
+			    </div>
+			</div>
 		</body>
 	</html>
 }

@@ -71,12 +71,16 @@ local config = function()
     settings = {},
   }
   lspconfig.templ.setup(templ_opts)
+  lspconfig.htmx.setup({
+    filetypes = { "templ" },
+  })
 
   vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),
     callback = function(event)
       local bufopts = { noremap = true, silent = true, buffer = event.buf }
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+      vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
     end,
   })
 end
